@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Reporting;
 
 /**
  *
  * @author Gunness
  */
-public class Connexion {
+public class Reporting {
     
 }
