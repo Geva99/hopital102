@@ -12,20 +12,16 @@ import java.util.ArrayList;
  */
 public class Connexion {
      /**
+     * Source du code TP3 
      * Attributs prives : connexion JDBC, statement, ordre requete et resultat requete
+     * 
+     * 
      */
-    private Connection conn;
-    private Statement stmt;
+    public static Connection conn;
+    private Statement stmt;// ordre sql
     private ResultSet rset;
     private ResultSetMetaData rsetMeta;
-    /**
-     * ArrayList public pour les requêtes de sélection
-     */
-    public ArrayList<String> requetes = new ArrayList<String>();
-    /**
-     * ArrayList public pour les requêtes de MAJ
-     */
-    public ArrayList<String> requetesMaj = new ArrayList<String>(); // liste des requêtes de MAJ
+    
 
     /**
      * Constructeur avec 4 paramètres : username et password ECE, login et password de la BDD
@@ -50,22 +46,25 @@ public class Connexion {
             stmt = conn.createStatement();
 
             // initialisation de la liste des requetes de selection et de MAJ
-            remplirRequetes();
-            remplirRequetesMaj();
+           // remplirRequetes();
+            //remplirRequetesMaj();
+            
         }
     }
-
+    
     /**
      * Méthode privée qui ajoute la requete de selection en parametre dans son ArrayList
      */
-    private void ajouterRequete(String requete) {
+    /*private void ajouterRequete(String requete) {
         requetes.add(requete);
     }
 
     /**
      * Méthode privée qui initialise la liste des requetes de selection
      */
-    private void remplirRequetes() {
+    /*private void remplirRequetes() {
+        
+        /* Exemple du TP3 :
         ajouterRequete("SELECT ename, sal FROM Emp ORDER BY sal;");
         ajouterRequete("SELECT Dept.*, Emp.*, Mission.* FROM Dept, Emp, Mission WHERE Dept.deptno=Emp.deptno AND Emp.empno=Mission.empno;");
         ajouterRequete("SELECT AVG (Emp.sal) FROM Emp, Mission WHERE Emp.empno = Mission.empno;");
@@ -73,19 +72,23 @@ public class Connexion {
         ajouterRequete("SELECT hiredate, empno, ename FROM Emp WHERE (((hiredate)>='1981-05-01' And (hiredate)<'1981-05-31'))ORDER BY hiredate;");
         ajouterRequete("SELECT ename, job FROM Emp ORDER BY job;");
         ajouterRequete("SELECT DISTINCT dname, job FROM Dept, Emp WHERE Dept.deptno=Emp.deptno AND job='Clerk';");
-    }
+        
+        
+    }*/
 
     /**
      * Méthode privée qui ajoute la requete de MAJ en parametre dans son ArrayList
      */
-    private void ajouterRequeteMaj(String requete) {
+   /* private void ajouterRequeteMaj(String requete) {
         requetesMaj.add(requete);
     }
 
     /**
      * Méthode privée qui initialise la liste des requetes de MAJ
      */
-    private void remplirRequetesMaj() {
+   /* private void remplirRequetesMaj() {
+       
+        /* Exemple du TP3 :
         // Requêtes d'insertion
         ajouterRequeteMaj("INSERT INTO Dept (deptno,dname,loc) VALUES (50,'ECE','Paris');");
 
@@ -94,16 +97,19 @@ public class Connexion {
 
         // Requêtes de suppression
         ajouterRequeteMaj("DELETE FROM Dept WHERE loc='Eiffel';");
-
+        
     }
 
     /**
      * Méthode qui retourne l'ArrayList des champs de la table en parametre
      *
+     * @param table
+     * @return 
+     * @throws java.sql.SQLException 
      */
-    public ArrayList remplirChampsTable(String table) throws SQLException {
+   /*public ArrayList remplirChampsTable(String table) throws SQLException {
         // récupération de l'ordre de la requete
-        rset = stmt.executeQuery("select * from " + table);
+        rset = stmt.executeQuery("select * from " + table);//ici stmt est l'ordre qui va executer la requete: on prend "attribut" de "table"
 
         // récupération du résultat de l'ordre
         rsetMeta = rset.getMetaData();
@@ -127,7 +133,7 @@ public class Connexion {
     /**
      * Methode qui retourne l'ArrayList des champs de la requete en parametre
      */
-    public ArrayList remplirChampsRequete(String requete) throws SQLException {
+   /* public ArrayList remplirChampsRequete(String requete) throws SQLException {
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery(requete);
 
@@ -165,7 +171,7 @@ public class Connexion {
     /**
      * Méthode qui execute une requete de MAJ en parametre
      */
-    public void executeUpdate(String requeteMaj) throws SQLException {
+   /* public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
-    }
+    }*/
 }
