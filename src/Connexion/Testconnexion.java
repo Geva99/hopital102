@@ -4,124 +4,80 @@
  * and open the template in the editor.
  */
 package Connexion;
+import java.sql.SQLException;
 import java.sql.*;
 import java.util.ArrayList;
+import Connexion.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author Gunness
  */
-public class Connexion {
-     /**
-     * Source du code TP3 
-     * Attributs prives : connexion JDBC, statement, ordre requete et resultat requete
-     * 
-     * 
-     */
-    public static Connection conn;
-    private Statement stmt;// ordre sql
-    private ResultSet rset;
-    private ResultSetMetaData rsetMeta;
-    
+public class Testconnexion {
 
     /**
-     * Constructeur avec 4 paramètres : username et password ECE, login et password de la BDD
+     * @param args the command line arguments
      */
-    public Connexion(String usernameECE, String passwordECE, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
-        // chargement driver "com.mysql.jdbc.Driver"
-        Class.forName("com.mysql.jdbc.Driver");
-
-        // Connexion via le tunnel SSH avec le username et le password ECE
-        SSHTunnel ssh = new SSHTunnel(usernameECE, passwordECE);
-
-        if (ssh.connect()) {
-            System.out.println("Connexion reussie");
-
-            // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3305/" + usernameECE;
-
-            //création d'une connexion JDBC à la base
-            conn = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
-
-            // création d'un ordre SQL (statement)
-            stmt = conn.createStatement();
-
-            // initialisation de la liste des requetes de selection et de MAJ
-           // remplirRequetes();
-            //remplirRequetesMaj();
-            
-        }
-    }
-    
-    /* deuxieme constructeur pour la connexion offline*/
-
-    /**
-     *
-     * @param loginDatabase     //login =root
-     * @param passwordDatabase // normalement vide
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
-    
-     public Connexion( String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
-        // chargement driver "com.mysql.jdbc.Driver"
-        Class.forName("com.mysql.jdbc.Driver");
-
-            System.out.println("Connexion reussie");
-
-            String nomdelabase;           
-            nomdelabase="hopital";
-            String urlDatabase = "jdbc:mysql://localhost/" + nomdelabase; 
-
-            //création d'une connexion JDBC à la base
-            conn = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
-
-            // création d'un ordre SQL (statement)
-            stmt = conn.createStatement();
-
-            // initialisation de la liste des requetes de selection et de MAJ
-           // remplirRequetes();
-            //remplirRequetesMaj();
-            
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        // TODO code application logic here
         
+      System.out.println("Debut test connexion");
+     Connexion Connexion1=new Connexion("root","");
+     Testconnexion test = new Testconnexion();
+      ArrayList<String> testliste;
+      test.remplirRequetes();
+      testliste=test.remplirChampsRequete("SELECT nom FROM employe WHERE nom=Nadal;",Connexion1);
+         System.out.println(testliste);
     }
     
+    
+    
+    public ArrayList<String> requetes = new ArrayList<String>();
+    /**
+     * ArrayList public pour les requêtes de MAJ
+     */
+    public ArrayList<String> requetesMaj = new ArrayList<String>(); // liste des requêtes de MAJ
     /**
      * Méthode privée qui ajoute la requete de selection en parametre dans son ArrayList
      */
-    /*private void ajouterRequete(String requete) {
+    private void ajouterRequete(String requete) throws SQLException {
+
         requetes.add(requete);
     }
 
     /**
      * Méthode privée qui initialise la liste des requetes de selection
      */
-    /*private void remplirRequetes() {
+    private void remplirRequetes() throws SQLException {
         
-        /* Exemple du TP3 :
-        ajouterRequete("SELECT ename, sal FROM Emp ORDER BY sal;");
+        /* Exemple du TP3 : */
+       /* ajouterRequete("SELECT ename, sal FROM Emp ORDER BY sal;");
         ajouterRequete("SELECT Dept.*, Emp.*, Mission.* FROM Dept, Emp, Mission WHERE Dept.deptno=Emp.deptno AND Emp.empno=Mission.empno;");
         ajouterRequete("SELECT AVG (Emp.sal) FROM Emp, Mission WHERE Emp.empno = Mission.empno;");
         ajouterRequete("SELECT Dept.*, Emp.* FROM Dept, Emp WHERE Dept.deptno=Emp.deptno AND comm>0;");
         ajouterRequete("SELECT hiredate, empno, ename FROM Emp WHERE (((hiredate)>='1981-05-01' And (hiredate)<'1981-05-31'))ORDER BY hiredate;");
         ajouterRequete("SELECT ename, job FROM Emp ORDER BY job;");
         ajouterRequete("SELECT DISTINCT dname, job FROM Dept, Emp WHERE Dept.deptno=Emp.deptno AND job='Clerk';");
+        */
         
-        
-    }*/
+        ajouterRequete("SELECT nom FROM employe WHERE nom='Nadal'';");
+
+    }
 
     /**
      * Méthode privée qui ajoute la requete de MAJ en parametre dans son ArrayList
      */
-   /* private void ajouterRequeteMaj(String requete) {
+    private void ajouterRequeteMaj(String requete) {
         requetesMaj.add(requete);
     }
 
     /**
      * Méthode privée qui initialise la liste des requetes de MAJ
      */
-   /* private void remplirRequetesMaj() {
+    private void remplirRequetesMaj() {
        
-        /* Exemple du TP3 :
+        // Exemple du TP3 :
         // Requêtes d'insertion
         ajouterRequeteMaj("INSERT INTO Dept (deptno,dname,loc) VALUES (50,'ECE','Paris');");
 
@@ -140,8 +96,12 @@ public class Connexion {
      * @return 
      * @throws java.sql.SQLException 
      */
-   /*public ArrayList remplirChampsTable(String table) throws SQLException {
+    public ArrayList remplirChampsTable(String table) throws SQLException {
         // récupération de l'ordre de la requete
+        Statement stmt;
+        stmt=Connexion.conn.createStatement();
+        ResultSet rset;
+        ResultSetMetaData rsetMeta;
         rset = stmt.executeQuery("select * from " + table);//ici stmt est l'ordre qui va executer la requete: on prend "attribut" de "table"
 
         // récupération du résultat de l'ordre
@@ -166,7 +126,11 @@ public class Connexion {
     /**
      * Methode qui retourne l'ArrayList des champs de la requete en parametre
      */
-   /* public ArrayList remplirChampsRequete(String requete) throws SQLException {
+    public ArrayList remplirChampsRequete(String requete, Connexion coco) throws SQLException {
+          Statement stmt;
+        stmt=Connexion.conn.createStatement();
+        ResultSet rset;
+        ResultSetMetaData rsetMeta;
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery(requete);
 
@@ -204,7 +168,12 @@ public class Connexion {
     /**
      * Méthode qui execute une requete de MAJ en parametre
      */
-   /* public void executeUpdate(String requeteMaj) throws SQLException {
+    public void executeUpdate(String requeteMaj) throws SQLException {
+        Statement stmt;
+        stmt=Connexion.conn.createStatement();
+        ResultSet rset;
+        ResultSetMetaData rsetMeta;
         stmt.executeUpdate(requeteMaj);
-    }*/
+    }
+    
 }
