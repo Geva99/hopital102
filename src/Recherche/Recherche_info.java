@@ -110,6 +110,9 @@ public class Recherche_info {
 
     /**
      * Methode qui retourne l'ArrayList des champs de la requete en parametre
+     * @param requete
+     * @return 
+     * @throws java.sql.SQLException
      */
     public ArrayList remplirChampsRequete(String requete) throws SQLException {
           Statement stmt;
