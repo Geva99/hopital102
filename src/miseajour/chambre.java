@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package miseajour;
+
+import java.sql.SQLException;
 import java.sql.*;
+import java.util.ArrayList;
+import Connexion.*;
 
 /**
  *
@@ -15,10 +19,11 @@ public class chambre {
     
     public void insertchambre (String codeSer, String numCha, String surveillant, String nbLits)
     {
+        Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')");
     }
     public int modifSurveillant (String numSurv, String )
     {
-        "UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        ResultSet rs = stmt.executeQuery("UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");
     }
 }
