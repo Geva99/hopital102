@@ -27,7 +27,7 @@ public class Testconnexion {
      Testconnexion test = new Testconnexion();
       ArrayList<String> testliste;
       test.remplirRequetes();
-      testliste=test.remplirChampsRequete("SELECT nom FROM employe WHERE nom=Nadal;",Connexion1);
+      testliste=test.remplirChampsRequete("SELECT nom FROM employe WHERE nom='Nadal';",Connexion1);
          System.out.println(testliste);
     }
     
@@ -61,7 +61,7 @@ public class Testconnexion {
         ajouterRequete("SELECT DISTINCT dname, job FROM Dept, Emp WHERE Dept.deptno=Emp.deptno AND job='Clerk';");
         */
         
-        ajouterRequete("SELECT nom FROM employe WHERE nom='Nadal'';");
+        ajouterRequete("SELECT nom FROM employe WHERE nom= 'Nadal';");
 
     }
 
