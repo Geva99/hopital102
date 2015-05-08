@@ -23,7 +23,7 @@ public class chambre {
 //        Statement stmt = conn.createStatement();
 //        ResultSet rs = stmt.executeQuery("INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')");
         String cmd = "INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')";
-        ajouterRequete (cmd);
+        ajouterRequeteMaj(cmd);
     }
     
     //        ResultSet rs = stmt.executeQuery("UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");

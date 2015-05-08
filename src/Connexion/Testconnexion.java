@@ -19,7 +19,7 @@ public class Testconnexion {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+  /**  public static void main(String[] args) throws SQLException, ClassNotFoundException {
         // TODO code application logic here
         
       System.out.println("Debut test connexion");
@@ -29,7 +29,7 @@ public class Testconnexion {
       test.remplirRequetes();
       testliste=test.remplirChampsRequete("SELECT nom FROM employe WHERE nom='Nadal';",Connexion1);
          System.out.println(testliste);
-    }
+    }*/
     
     
     
