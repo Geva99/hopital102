@@ -27,7 +27,6 @@ class chambre extends miseajour{
     
     //        ResultSet rs = stmt.executeQuery("UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");
 
-    
     public void modifChambre (String codeSer, int numCha, int numSurv, int nbLits) throws SQLException
     {
         String maj1 = "UPDATE chambre SET surveillant = '"+numSurv+"' WHERE (code_service = '"+codeSer+"' && no_chambre = '"+numCha+"')";
