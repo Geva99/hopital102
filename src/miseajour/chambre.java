@@ -10,20 +10,20 @@ import java.sql.*;
 import java.util.ArrayList;
 import Connexion.*;
 import Recherche.Recherche_info;
+import Stockage.Chambre;
+import miseajour.miseajour.*;
 
 /**
  *
  * @author Twentycent_ONE
  */
-public class chambre {
+class chambre extends miseajour{
     
-    
+    Stockage.Chambre chambr = new Stockage.Chambre(); 
     public void insertchambre (String codeSer, String numCha, String surveillant, String nbLits)
     {
-//        Statement stmt = conn.createStatement();
-//        ResultSet rs = stmt.executeQuery("INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')");
         String cmd = "INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')";
-        ajouterRequeteMaj(cmd);
+        chambr.ajouterRequeteMaj(cmd);
     }
     
     //        ResultSet rs = stmt.executeQuery("UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");

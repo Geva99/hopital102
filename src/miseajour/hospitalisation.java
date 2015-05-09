@@ -17,10 +17,15 @@ public class hospitalisation {
         ajouterRequete(cmd);
 //        ResultSet rs = stmt.executeQuery("INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')");
     }
+    public void modifhospitalisationk (String numSurv, String codeSer, String numCha)
+    {
+        ajouterRequete("UPDATE hospitalisation SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");
+    }
     public void modifhospitalisation (String numSurv, String codeSer, String numCha)
     {
         ajouterRequete("UPDATE hospitalisation SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");
     }
+    
     
     public void supprhospitalisation (String numSurv, String codeSer, String numCha)
     {
