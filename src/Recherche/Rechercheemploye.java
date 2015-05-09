@@ -5,10 +5,21 @@
  */
 package Recherche;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Twentycent_ONE
  */
-public class Rechercheemploye {
+public class Rechercheemploye extends Recherche_info {
+    
+    
+    Rechercheemploye Rechemp = new Rechercheemploye();
+    public Arraylist<Docteur> rechDocteurNom ()
+    {
+        String
+        Rechemp.ajouterRequeteMaj ();
+
+    }
     
 }

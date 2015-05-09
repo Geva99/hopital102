@@ -51,24 +51,6 @@ public abstract class miseajour {
 //        requetesMaj.add(requete);
 //    }
 
-    
-    
-    /**
-     * Méthode privée qui initialise la liste des requetes de MAJ
-     */
-    
-    
-//    private void remplirRequetesMaj() {
-//       // Requêtes d'insertion
-//        ajouterRequeteMaj("INSERT INTO Dept (deptno,dname,loc) VALUES (50,'ECE','Paris');");
-//
-//        // Requêtes de modification
-//        ajouterRequeteMaj("UPDATE Dept SET loc='Eiffel' WHERE loc='Paris';");
-//
-//        // Requêtes de suppression
-//        ajouterRequeteMaj("DELETE FROM Dept WHERE loc='Eiffel';");
-//        
-//    }
 
     
     
