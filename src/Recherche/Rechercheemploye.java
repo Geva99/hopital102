@@ -25,7 +25,7 @@ public class Rechercheemploye extends Recherche_info {
     
     public ArrayList<Docteur> rechDocteurNom ()
     {
-        String 
+        String req = "SELECT "
         Rechemp.ajouterRequeteMaj ();
 
     }
