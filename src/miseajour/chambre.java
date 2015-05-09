@@ -21,7 +21,7 @@ class chambre extends miseajour{
     chambre chambr = new chambre(); 
     public void insertchambre (String codeSer, String numCha, String surveillant, String nbLits) throws SQLException
     {
-        String cmd = "INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')";
+        String cmd = "INSERT INTO chambre VALUES ('"+codeSer+"','"+numCha+"','"+surveillant+"','"+nbLits+"')";
         chambr.executeUpdate(cmd);
     }
     
@@ -30,20 +30,20 @@ class chambre extends miseajour{
     
     public void modifChambre (String codeSer, String numCha, String numSurv, String nbLits) throws SQLException
     {
-        String maj1 = "UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        String maj1 = "UPDATE chambre SET surveillant = '"+numSurv+"' WHERE (code_service = '"+codeSer+"' && no_chambre = '"+numCha+"')";
         chambr.executeUpdate (maj1);
-        String maj2 = "UPDATE chambre SET code_service = 'codeSer' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        String maj2 = "UPDATE chambre SET code_service = '"+codeSer+"' WHERE (code_service = '"+codeSer+"' && no_chambre = '"+numCha+"')";
         chambr.executeUpdate (maj2);
-        String maj3 = "UPDATE chambre SET no_chambre = 'numCha' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        String maj3 = "UPDATE chambre SET no_chambre = '"+numCha+"' WHERE (code_service = '"+codeSer+"' && no_chambre = '"+numCha+"')";
         chambr.executeUpdate (maj3);
-        String maj4 = "UPDATE chambre SET nb_lits = 'nbLits' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        String maj4 = "UPDATE chambre SET nb_lits = '"+nbLits+"' WHERE (code_service = '"+codeSer+"' && no_chambre = '"+numCha+"')";
         chambr.executeUpdate (maj4);
         
     }
     
     public void supprChambre (String codeSer, String numCha) throws SQLException
     {
-        String cmd = "DELETE FROM chambre WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        String cmd = "DELETE FROM chambre WHERE (code_service = '"+codeSer+"' && no_chambre = 'numCha')";
         chambr.executeUpdate(cmd);
     }
     
