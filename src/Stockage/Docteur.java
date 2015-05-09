@@ -11,4 +11,18 @@ package Stockage;
  */
 public class Docteur extends Employe{
     private String specialite;
+    
+    /**
+     *
+     * @param Nom
+     * @param Prenom
+     */
+    public Docteur (String Nom,String Prenom ){}
+    
+    public Docteur (String Nom) {}
+    
+    
 }
+
+
+

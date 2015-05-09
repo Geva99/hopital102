@@ -19,7 +19,7 @@ import miseajour.miseajour.*;
 class chambre extends miseajour{
     
     chambre chambr = new chambre(); 
-    public void insertchambre (String codeSer, String numCha, String surveillant, String nbLits) throws SQLException
+    public void insertchambre (String codeSer, int numCha, int surveillant, int nbLits) throws SQLException
     {
         String cmd = "INSERT INTO chambre VALUES ('"+codeSer+"','"+numCha+"','"+surveillant+"','"+nbLits+"')";
         chambr.executeUpdate(cmd);
@@ -28,7 +28,7 @@ class chambre extends miseajour{
     //        ResultSet rs = stmt.executeQuery("UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");
 
     
-    public void modifChambre (String codeSer, String numCha, String numSurv, String nbLits) throws SQLException
+    public void modifChambre (String codeSer, int numCha, int numSurv, int nbLits) throws SQLException
     {
         String maj1 = "UPDATE chambre SET surveillant = '"+numSurv+"' WHERE (code_service = '"+codeSer+"' && no_chambre = '"+numCha+"')";
         chambr.executeUpdate (maj1);
@@ -41,7 +41,7 @@ class chambre extends miseajour{
         
     }
     
-    public void supprChambre (String codeSer, String numCha) throws SQLException
+    public void supprChambre (int codeSer, int numCha) throws SQLException
     {
         String cmd = "DELETE FROM chambre WHERE (code_service = '"+codeSer+"' && no_chambre = 'numCha')";
         chambr.executeUpdate(cmd);
