@@ -6,6 +6,8 @@
 package Recherche;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import Stockage.Docteur;
 
 /**
  *
@@ -15,9 +17,15 @@ public class Rechercheemploye extends Recherche_info {
     
     
     Rechercheemploye Rechemp = new Rechercheemploye();
-    public Arraylist<Docteur> rechDocteurNom ()
+
+    /**
+     *
+     */
+    public ArrayList<Docteur> tableauDocteur = new ArrayList<Docteur>();
+    
+    public ArrayList<Docteur> rechDocteurNom ()
     {
-        String
+        String 
         Rechemp.ajouterRequeteMaj ();
 
     }
