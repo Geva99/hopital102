@@ -5,17 +5,21 @@
  */
 package miseajour;
 
+
+import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import Recherche.Recherche_info;
+import Stockage.Hospitalisation;
 /**
  *
  * @author Twentycent_ONE
  */
-public class hospitalisation {
+public class hospitalisation extends miseajour {
         public void inserthospitalisation (String codeSer, String numCha, String surveillant, String nbLits)
     {
-//        Statement stmt = conn.createStatement();
         String cmd = "INSERT INTO hospitalisation VALUES ('codeSer','numCha','surveillant','nbLits')";
         ajouterRequete(cmd);
-//        ResultSet rs = stmt.executeQuery("INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')");
     }
     public void modifhospitalisationk (String numSurv, String codeSer, String numCha)
     {

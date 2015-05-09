@@ -6,7 +6,6 @@
 package miseajour;
 
 import java.sql.SQLException;
-import java.sql.*;
 import java.util.ArrayList;
 import Connexion.*;
 import Recherche.Recherche_info;
@@ -19,38 +18,51 @@ import miseajour.miseajour.*;
  */
 class chambre extends miseajour{
     
-    Stockage.Chambre chambr = new Stockage.Chambre(); 
-    public void insertchambre (String codeSer, String numCha, String surveillant, String nbLits)
+    chambre chambr = new chambre(); 
+    public void insertchambre (String codeSer, String numCha, String surveillant, String nbLits) throws SQLException
     {
         String cmd = "INSERT INTO chambre VALUES ('codeSer','numCha','surveillant','nbLits')";
-        chambr.ajouterRequeteMaj(cmd);
+        chambr.executeUpdate(cmd);
     }
     
     //        ResultSet rs = stmt.executeQuery("UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");
 
     
-    public void modifChambreSurveillant (String codeSer, String numCha, String numSurv)
+    public void modifChambre (String codeSer, String numCha, String numSurv, String nbLits) throws SQLException
     {
-        String cmd = "UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
-        ajouterRequete (cmd);
+        String maj1 = "UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        chambr.executeUpdate (maj1);
+        String maj2 = "UPDATE chambre SET code_service = 'codeSer' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        chambr.executeUpdate (maj2);
+        String maj3 = "UPDATE chambre SET no_chambre = 'numCha' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        chambr.executeUpdate (maj3);
+        String maj4 = "UPDATE chambre SET nb_lits = 'nbLits' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        chambr.executeUpdate (maj4);
+        
     }
     
-     public void modifChambreService (String codeSer, String numCha)
+    public void supprChambre (String codeSer, String numCha) throws SQLException
     {
-        String cmd = "UPDATE chambre SET code_service = 'codeSer' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
-        ajouterRequete (cmd);
+        String cmd = "DELETE FROM chambre WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+        chambr.executeUpdate(cmd);
     }
-     
-          public void modifChambreNum (String codeSer, String numCha)
-    {
-        String cmd = "UPDATE chambre SET no_chambre = 'numCha' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
-        ajouterRequete (cmd);
-    }
-          
-               public void modifChambreNbLits (String codeSer, String numCha, String nbLits)
-    {
-        String cmd = "UPDATE chambre SET nb_lits = 'nbLits' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
-        ajouterRequete (cmd);
-    }
+    
+//     public void modifChambreService (String codeSer, String numCha) throws SQLException
+//    {
+//        String maj2 = "UPDATE chambre SET code_service = 'codeSer' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+//        chambr.executeUpdate (maj2);
+//    }
+//     
+//          public void modifChambreNum (String codeSer, String numCha) throws SQLException
+//    {
+//        String maj3 = "UPDATE chambre SET no_chambre = 'numCha' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+//        executeUpdate (maj3);
+//    }
+//          
+//               public void modifChambreNbLits (String codeSer, String numCha, String nbLits) throws SQLException
+//    {
+//        String maj4 = "UPDATE chambre SET nb_lits = 'nbLits' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')";
+//        chambr.executeUpdate (maj4);
+//    }
      
 }
