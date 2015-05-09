@@ -9,12 +9,8 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import Interface.MAJ;
-import Interface.Recherche;
-import Interface.Stats;
 import static javafx.application.Application.launch;
 import javafx.scene.text.Font;
 
@@ -40,13 +36,13 @@ public class Interface extends Application {
       menu.setUnderline(true);
      
       
-      Recherche infos = new Recherche();
-      MAJ boutton = new MAJ();
+     Recherche infos = new Recherche();
+     //MAJ boutton = new MAJ();
       Stats button = new Stats();
       
       root.getChildren().add(menu);
       root.getChildren().add(infos);
-      root.getChildren().add(boutton);
+      //root.getChildren().add(boutton);
       root.getChildren().add(button);//ajout du bouton au groupe root
       
       primaryStage.show();
@@ -55,9 +51,9 @@ public class Interface extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+   /** public static void main(String[] args) {
         launch(args);
        
     }
-    
+    */
 }
