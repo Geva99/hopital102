@@ -34,9 +34,9 @@ public class hospitalisation extends miseajour {
         
     }   
     
-    public void supprhospitalisation (String numSurv, String codeSer, String numCha)
+    public void supprhospitalisation (String numSurv, String codeSer, String numCha) throws SQLException
     {
-        String cmd = "DELETE FROM hospitalisation WHERE (code_service = '"+codeSer+"' && no_chambre = '"+numCha+"')"
+        String cmd = "DELETE FROM hospitalisation WHERE (code_service = '"+codeSer+"' && no_chambre = '"+numCha+"')";
         executeUpdate(cmd);
     }
     
