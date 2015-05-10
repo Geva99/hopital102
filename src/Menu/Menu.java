@@ -77,12 +77,19 @@ public class Menu extends JFrame implements ActionListener{
      {
          try {
              Accueil acucu =new Accueil();
+             fenetremenu.setVisible(false);
          } catch (IOException ex) {
              Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
          }
      }
      if(tada.getSource()==OfflineNutton)
      {
+         try {
+             Accueil acucu =new Accueil();
+         } catch (IOException ex) {
+             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+         }
+             fenetremenu.setVisible(false);
      }
     }
     
