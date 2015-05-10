@@ -24,17 +24,17 @@ public class Rechercheemploye extends Recherche_info {
      */
     public ArrayList<Docteur> tableauDocteur = new ArrayList<Docteur>();
     
-    public ArrayList<Docteur> rechDocteurParNom (String nomDocteur, Connexion coco) throws SQLException
+    public ArrayList<Docteur> rechEmployeParNom (String nomEmploye, Connexion coco) throws SQLException
     {
-        String req = "SELECT * FROM employe WHERE employe.nom= '"+nomDocteur+"";
+        String req = "SELECT * FROM employe WHERE employe.nom= '"+nomEmploye+"";
         ArrayList liste = Rechemp.ajouterRequeteMulti (req, coco);
         return (liste);
     }
     
-    public Docteur rechDocteur (String employe, String nomDocteur, String prenomDocteur, Connexion coco) throws SQLException
+    public Docteur rechEmploye (String employe, String nomDocteur, String prenomDocteur, Connexion coco) throws SQLException
     {
         String req = "SELECT * FROM employe WHERE (employe.nom == '"+nomDocteur+"&&employe.prenom == '"+prenomDocteur+"')"; 
-        Docteur doc = Rechemp.ajouterRequeteMaj(req);
+        Rechercheemploye doc = Rechemp.ajouterRequeteMaj(req);
         RechObjetParNomPrenom (employe, nomDocteur, prenomDocteur, coco );
     }
 }

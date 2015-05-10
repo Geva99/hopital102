@@ -11,4 +11,6 @@ package Recherche;
  */
 public class Recherchechambre extends Rechercheobjet{
     
+    
+    
 }

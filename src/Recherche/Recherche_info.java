@@ -25,8 +25,12 @@ public abstract class Recherche_info {
     public ArrayList<String> requetesMaj = new ArrayList<String>(); // liste des requêtes de MAJ
    
     protected Rechercheobjet RechObjetParNomPrenom (String classe, String nom, String prenom, Connexion coco){
-                String req = "SELECT * FROM "+classe+" WHERE (employe.nom == '"+nom+"&&employe.prenom == '"+prenom+"')"; 
-                return ()
+        String req = "SELECT * FROM "+classe+" WHERE (employe.nom == '"+nom+"&&employe.prenom == '"+prenom+"')"; 
+        Statement stmt;
+        stmt=Connexion.conn.createStatement();
+        requetes.add(req);
+        ResultSet rset;
+        return ();
     }
     
     /**
@@ -86,6 +90,8 @@ public abstract class Recherche_info {
         return liste;
     }
    
+    
+    
     
 //    protected void ajouterRequeteMaj(String requete) {
 //        requetesMaj.add(requete);
