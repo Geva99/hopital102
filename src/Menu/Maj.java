@@ -4,35 +4,34 @@
  * and open the template in the editor.
  */
 package Menu;
+
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+
 /**
  *
  * @author Gunness
  */
-public class Accueil extends JFrame implements ActionListener{
+public class Maj extends JFrame implements ActionListener {
     
-      private final JFrame fenetremenu; // declaration d'une fenetre pour acceuil
+    private final JFrame fenetremenu; // declaration d'une fenetre pour acceuil
     private JPanel panelmenu; //declaration d'un panneau accueil
     private final JButton recherche ;   //Bouton recherche
     private JButton maj;  //Bouton mise a jour
     private JButton histo;  //Bouton histogramme/reporting
     private final JLabel titre; // declaration du titre
     
-      public Accueil() throws IOException 
+      public Maj() throws IOException 
     {
        
         fenetremenu=new JFrame();//creation d'une fenetre pour le menu
@@ -41,7 +40,7 @@ public class Accueil extends JFrame implements ActionListener{
       
         panelmenu = new JPanel();//creation d'un panneau menu
         
-        panelmenu = setImage(fenetremenu, new File("acc.png"));
+        panelmenu = setImage(fenetremenu, new File("maj.png"));
         panelmenu.setLayout(null);
         recherche = new JButton("Recherche d'information dans la base");
         maj = new JButton("Mise à jourde la base");
@@ -79,34 +78,18 @@ public class Accueil extends JFrame implements ActionListener{
     {
      if(tada.getSource()==recherche)
      {
-         try {
-             Rechercheinf pageinf= new Rechercheinf();
-             //pageinf.Rechercheinf();
-             fenetremenu.setVisible(false);
-         } catch (IOException ex) {
-             Logger.getLogger(Accueil.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         
+         //Rechercheinf pageinf= new Rechercheinf();
+         fenetremenu.setVisible(false);
      }
      if(tada.getSource()==maj)
      {
-         try {
-             Maj pagemaj=new Maj();
-             fenetremenu.setVisible(false);
-         } catch (IOException ex) {
-             Logger.getLogger(Accueil.class.getName()).log(Level.SEVERE, null, ex);
-         }
-
+        
+         fenetremenu.setVisible(false);
      }
      if(tada.getSource()==histo)
      {
-         try {
-             histo pagehisto= new histo();
-             fenetremenu.setVisible(false);
-         } catch (IOException ex) {
-             Logger.getLogger(Accueil.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         
+         //histo pagehisto= new histo();
+         fenetremenu.setVisible(false);
      }
     }
     
@@ -135,5 +118,3 @@ public class Accueil extends JFrame implements ActionListener{
         return panel;
     }
 }
-
-
