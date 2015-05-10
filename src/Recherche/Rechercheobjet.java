@@ -9,6 +9,9 @@ package Recherche;
  *
  * @author Twentycent_ONE
  */
-public class Recherchechambre extends Rechercheobjet{
+public class Rechercheobjet {
     
+    
+    public Rechercheobjet (){
+    }
 }
