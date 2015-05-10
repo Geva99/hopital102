@@ -17,7 +17,7 @@ public class docteur extends miseajour{
     
     public void insertDoc (int numerodoc, String spedoc, String nomemp, String prenomemp, String adresse,int tel) throws SQLException
     {
-        String cmd1 = "INSERT INTO employe VALUES ('"+numerodoc+"','"+spedoc+"')";
+        String cmd1 = "INSERT INTO docteur VALUES ('"+numerodoc+"','"+spedoc+"')";
         doc.executeUpdate(cmd1);
         String cmd2 = "INSERT INTO employe VALUES ('"+numerodoc+"','"+nomemp+"','"+prenomemp+"','"+adresse+"','"+tel+"')";
         doc.executeUpdate(cmd2);
@@ -28,9 +28,9 @@ public class docteur extends miseajour{
     public void modifDoc (int numerodoc, String spedoc) throws SQLException
     {
         //On modifie un employé
-        String maj1 = "UPDATE employe SET employe.numero == '"+numerodoc+"' WHERE (employe.numero=='"+numerodoc+"')";
+        String maj1 = "UPDATE docteur SET employe.numero == '"+numerodoc+"' WHERE (employe.numero=='"+numerodoc+"')";
         doc.executeUpdate (maj1);
-        String maj2 = "UPDATE employe SET employe.nom == '"+spedoc+"' WHERE (employe.numero=='"+numerodoc+"')";
+        String maj2 = "UPDATE docteur SET employe.nom == '"+spedoc+"' WHERE (employe.numero=='"+numerodoc+"')";
         doc.executeUpdate (maj2);
         
         // On modifie ou on essaie de modifier dans les tables infirmier et docteur:
@@ -41,7 +41,7 @@ public class docteur extends miseajour{
     {
         String cmd1 = "DELETE FROM employe WHERE (employe.numero=='"+numerodoc+"')";
         doc.executeUpdate(cmd1);
-        String cmd2 = 
+//        String cmd2 = 
     }
     
 }
