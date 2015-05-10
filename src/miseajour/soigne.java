@@ -30,6 +30,7 @@ public class soigne extends miseajour{
         soi.executeUpdate (maj); 
     }
     
+    
     public void supprSoi (int numerodoc, int numeromalade) throws SQLException
     {
         String cmd1 = "DELETE FROM soigne WHERE (soigne.numero_docteur=='"+numerodoc+"'&&soigne.numero_malade=='"+numeromalade+"')";
