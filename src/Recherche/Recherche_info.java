@@ -146,7 +146,7 @@ public abstract class Recherche_info {
      * @throws java.sql.SQLException
      */
     public ArrayList remplirChampsRequete(String requete) throws SQLException {
-          Statement stmt;
+        Statement stmt;
         stmt=Connexion.conn.createStatement();
         ResultSet rset;
         ResultSetMetaData rsetMeta;
