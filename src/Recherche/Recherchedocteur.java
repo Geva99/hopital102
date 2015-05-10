@@ -8,9 +8,9 @@ package Recherche;
 
 
 import Connexion.Connexion;
-import Stockage.Docteur;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import Stockage.Docteur;
 /**
  *
  * @author Twentycent_ONE
@@ -21,8 +21,24 @@ public class Recherchedocteur extends Rechercheemploye{
     
     public ArrayList<Docteur> rechDocteurParNom (String nomDocteur, Connexion coco) throws SQLException
     {
-        String req = "SELECT * FROM employe WHERE employe.nom= '"+nomDocteur+"";
+        String req = "SELECT * FROM employe WHERE employe.nom == '"+nomDocteur+"";
         ArrayList liste = Rechdoc.ajouterRequeteMulti (req, coco);
         return (liste);
+    }
+    
+    public void rechDocteur (String employe, String nomDocteur, String prenomDocteur, Connexion coco) throws SQLException
+    {
+        Docteur doc;
+        String req = "SELECT * FROM employe WHERE (employe.nom == '"+nomDocteur+"&&employe.prenom == '"+prenomDocteur+"')"; 
+        remplirChampsRequete(req);
+        
+//        ArrayList liste = Rechdoc.ajouterRequeteMulti (req, coco);
+        
+        
+//        doc.getspecialite();
+//        doc.getnom();
+//        doc.getprenom();
+//        doc.getadresse();
+//        doc.gettel();
     }
 }

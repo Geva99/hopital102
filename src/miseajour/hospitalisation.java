@@ -21,17 +21,17 @@ public class hospitalisation extends miseajour {
         String cmd = "INSERT INTO hospitalisation VALUES ('codeSer','numCha','surveillant','nbLits')";
         executeUpdate(cmd);
     }
-    public void modifhospitalisation (int numMalade, String codeSer, int numCha, int lit) throws SQLException
+    public void modifhospitalisation (int anciennumMalade, int numMalade, String codeSer, int numCha, int lit) throws SQLException
     {
-        String maj1 = "UPDATE hospitalisation SET no_malade == '"+numMalade+"' WHERE (no_malade == '"+numMalade+"')";
-        executeUpdate(maj1);
-        String maj2 = "UPDATE hospitalisation SET code_service == '"+codeSer+"' WHERE (no_malade == '"+numMalade+"')";
-        executeUpdate(maj2);
-        String maj3 = "UPDATE hospitalisation SET no_chambre == '"+numCha+"' WHERE (no_malade == '"+numMalade+"')";
-        executeUpdate(maj3);
-        String maj4 = "UPDATE hospitalisation SET no_chambre == '"+lit+"' WHERE (no_malade == '"+numMalade+"')";
-        executeUpdate(maj4);
         
+        String maj1 = "UPDATE hospitalisation SET code_service == '"+codeSer+"' WHERE (no_malade == '"+anciennumMalade+"')";
+        executeUpdate(maj1);
+        String maj2 = "UPDATE hospitalisation SET no_chambre == '"+numCha+"' WHERE (no_malade == '"+anciennumMalade+"')";
+        executeUpdate(maj2);
+        String maj3 = "UPDATE hospitalisation SET no_chambre == '"+lit+"' WHERE (no_malade == '"+anciennumMalade+"')";
+        executeUpdate(maj3);
+        String maj4 = "UPDATE hospitalisation SET no_malade == '"+numMalade+"' WHERE (no_malade == '"+anciennumMalade+"')";
+        executeUpdate(maj4);
     }   
     
     public void supprhospitalisation (String codeSer, int numCha) throws SQLException

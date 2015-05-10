@@ -20,18 +20,19 @@ public class employe extends miseajour{
     
     //        ResultSet rs = stmt.executeQuery("UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");
 
-    public void modifEmp (int numeroemp, String nomemp, String prenomemp, String adresse,int tel) throws SQLException
+    public void modifEmp (int anciennumeroemp, int numeroemp, String nomemp, String prenomemp, String adresse,int tel) throws SQLException
     {
         //On modifie un employé
-        String maj1 = "UPDATE employe SET employe.numero == '"+numeroemp+"' WHERE (employe.numero=='"+numeroemp+"')";
+        
+        String maj1 = "UPDATE employe SET employe.nom == '"+nomemp+"' WHERE (employe.numero=='"+anciennumeroemp+"')";
         emp.executeUpdate (maj1);
-        String maj2 = "UPDATE employe SET employe.nom == '"+nomemp+"' WHERE (employe.numero=='"+numeroemp+"')";
+        String maj2 = "UPDATE employe SET employe.prenom == '"+prenomemp+"' WHERE (employe.numero=='"+anciennumeroemp+"')";
         emp.executeUpdate (maj2);
-        String maj3 = "UPDATE employe SET employe.prenom == '"+prenomemp+"' WHERE (employe.numero=='"+numeroemp+"')";
+        String maj3 = "UPDATE employe SET employe.adresse == '"+adresse+"' WHERE (employe.numero=='"+anciennumeroemp+"')";
         emp.executeUpdate (maj3);
-        String maj4 = "UPDATE employe SET adresse == '"+adresse+"' WHERE (employe.numero=='"+numeroemp+"')";
+        String maj4 = "UPDATE employe SET employe.tel == '"+tel+"' WHERE (employe.numero=='"+anciennumeroemp+"')";
         emp.executeUpdate (maj4);
-        String maj5 = "UPDATE employe SET tel == '"+tel+"' WHERE (employe.numero=='"+numeroemp+"')";
+        String maj5 = "UPDATE employe SET employe.numero == '"+numeroemp+"' WHERE (employe.numero=='"+anciennumeroemp+"')";
         emp.executeUpdate (maj5);
     }
     

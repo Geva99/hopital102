@@ -25,16 +25,15 @@ public class docteur extends miseajour{
     
     //        ResultSet rs = stmt.executeQuery("UPDATE chambre SET surveillant = 'numSurv' WHERE (code_service = 'codeSer' && no_chambre = 'numCha')");
 
-    public void modifDoc (int numerodoc, String spedoc) throws SQLException
+    public void modifDoc (int anciennumerodoc, int numerodoc, String spedoc) throws SQLException
     {
         //On modifie un docteur
-        String maj1 = "UPDATE docteur SET docteur.numero == '"+numerodoc+"' WHERE (docteur.numero=='"+numerodoc+"')";
+        String maj1 = "UPDATE docteur SET docteur.numero == '"+numerodoc+"' WHERE (docteur.numero=='"+anciennumerodoc+"')";
         doc.executeUpdate (maj1);
-        String maj2 = "UPDATE docteur SET docteur.specialité == '"+spedoc+"' WHERE (docteur.numero=='"+numerodoc+"')";
+        String maj2 = "UPDATE docteur SET docteur.specialité == '"+spedoc+"' WHERE (docteur.numero=='"+anciennumerodoc+"')";
         doc.executeUpdate (maj2);
-        
             //On modifie en même temps un employé
-        String maj3 = "UPDATE employe SET employe. == '"+numerodoc+"' WHERE (employe.numero=='"+numerodoc+"')";
+        String maj3 = "UPDATE employe SET employe.numero == '"+numerodoc+"' WHERE (employe.numero=='"+anciennumerodoc+"')";
         doc.executeUpdate (maj3);
         // On modifie ou on essaie de modifier dans les tables infirmier et docteur:
         
