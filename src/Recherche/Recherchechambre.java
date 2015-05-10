@@ -9,7 +9,7 @@ package Recherche;
  *
  * @author Twentycent_ONE
  */
-public class Recherchechambre extends Rechercheobjet{
+public class Recherchechambre extends Recherche_info{
     
     
     
