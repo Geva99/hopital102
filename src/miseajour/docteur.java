@@ -34,7 +34,7 @@ public class docteur extends miseajour{
         doc.executeUpdate (maj2);
         
             //On modifie en même temps un employé
-        String maj3 = "UPDATE employé SET employé. == '"+numerodoc+"' WHERE (employe.numero=='"+numerodoc+"')";
+        String maj3 = "UPDATE employe SET employe. == '"+numerodoc+"' WHERE (employe.numero=='"+numerodoc+"')";
         doc.executeUpdate (maj3);
         // On modifie ou on essaie de modifier dans les tables infirmier et docteur:
         
@@ -45,7 +45,7 @@ public class docteur extends miseajour{
         String cmd1 = "DELETE FROM employe WHERE (employe.numero=='"+numerodoc+"')";
         doc.executeUpdate(cmd1);
         String cmd2 = "DELETE FROM docteur WHERE (docteur.numero=='"+numerodoc+"')";
-        doc.executeUpdate(cmd1);
+        doc.executeUpdate(cmd2);
     }
     
 }
