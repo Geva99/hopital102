@@ -33,16 +33,11 @@ public class employe extends miseajour{
         emp.executeUpdate (maj4);
         String maj5 = "UPDATE employe SET tel == '"+tel+"' WHERE (employe.numero=='"+numeroemp+"')";
         emp.executeUpdate (maj5);
-        
     }
     
     public void supprEmp (int numeroemp) throws SQLException
     {
         String cmd1 = "DELETE FROM employe WHERE (employe.numero=='"+numeroemp+"')";
         emp.executeUpdate(cmd1);
-        String cmd2 = "DELETE FROM docteur WHERE (docteur.numero=='"+numeroemp+"')";
-        emp.executeUpdate(cmd2);
-        String cmd3 = "DELETE FROM infirmier WHERE (infirmier.numero=='"+numeroemp+"')";
-        emp.executeUpdate(cmd3);
     }
 }
