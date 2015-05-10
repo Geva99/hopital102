@@ -5,6 +5,8 @@
  */
 package Recherche;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author Twentycent_ONE
@@ -12,6 +14,7 @@ package Recherche;
 public class Rechercheobjet {
     
     
-    public Rechercheobjet (){
+    public ResultSet Rechercheobjet (){
+        
     }
 }

@@ -24,14 +24,17 @@ public abstract class Recherche_info {
      */
     public ArrayList<String> requetesMaj = new ArrayList<String>(); // liste des requêtes de MAJ
    
-    protected Rechercheobjet RechObjetParNomPrenom (String classe, String nom, String prenom, Connexion coco) throws SQLException{
+    protected ResultSet RechObjetParNomPrenom (String classe, String nom, String prenom, Connexion coco) throws SQLException{
         String req = "SELECT * FROM "+classe+" WHERE (employe.nom == '"+nom+"&&employe.prenom == '"+prenom+"')"; 
         Statement stmt;
         stmt=Connexion.conn.createStatement();
         requetes.add(req);
         ResultSet rset;
-        Rechercheobjet a;
-        return (a);
+        ResultSetMetaData rsetMeta;
+        // récupération de l'ordre de la requete
+        rset = stmt.executeQuery(req);
+        // récupération du résultat de l'ordre
+        return(rset);
     }
     
     /**
