@@ -15,7 +15,7 @@ public class docteur extends miseajour{
     
     docteur doc = new docteur ();
     
-    public void insertDoc (int numerodoc, String spedoc) throws SQLException
+    public void insertDoc (int numerodoc, String spedoc, String nomemp, String prenomemp, String adresse,int tel) throws SQLException
     {
         String cmd1 = "INSERT INTO employe VALUES ('"+numerodoc+"','"+spedoc+"')";
         doc.executeUpdate(cmd1);
@@ -39,8 +39,9 @@ public class docteur extends miseajour{
     
     public void supprDoc (int numerodoc) throws SQLException
     {
-        String cmd = "DELETE FROM employe WHERE (employe.numero=='"+numerodoc+"')";
-        doc.executeUpdate(cmd);
+        String cmd1 = "DELETE FROM employe WHERE (employe.numero=='"+numerodoc+"')";
+        doc.executeUpdate(cmd1);
+        String cmd2 = 
     }
     
 }
