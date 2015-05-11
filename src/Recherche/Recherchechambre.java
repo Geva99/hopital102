@@ -37,7 +37,6 @@ public class Recherchechambre extends Recherche_info{
         String req = "SELECT * FROM employe WHERE (chambre.no_chambre == '"+numChambre+"&&chambre.code_service == '"+service+"')"; 
         ArrayList liste = remplirChampsRequete(req, coco);
         return liste;
-//        ArrayList liste = Rechdoc.ajouterRequeteMulti (req, coco);
     }
     
 }
