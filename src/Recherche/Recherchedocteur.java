@@ -21,16 +21,17 @@ public class Recherchedocteur extends Rechercheemploye{
     
     public ArrayList<Docteur> rechDocteurParNom (String nomDocteur, Connexion coco) throws SQLException
     {
-        String req = "SELECT * FROM employe WHERE employe.nom == '"+nomDocteur+"";
+        // On recherche les attributs des docteurs dont on donne le nom
+        String req ="SELECT specialite, employe.nom, employe.prenom, employe.adresse, employe.tel FROM docteur, employe WHERE (employe.nom == '%"+nomDocteur+"%' AND docteur.numero==employe.numero)";
         ArrayList liste = Rechdoc.ajouterRequeteMulti (req, coco);
         return liste;
     }
     
     public ArrayList rechDocteur (String nomDocteur, String prenomDocteur, Connexion coco) throws SQLException
     {
-        String req = "SELECT * FROM employe WHERE (employe.nom == '"+nomDocteur+"&&employe.prenom == '"+prenomDocteur+"')"; 
-        ArrayList liste = remplirChampsRequete(req, coco);
+        //On recherche un docteur particulier
+        String req = "SELECT * FROM employe WHERE (employe.nom == '"+nomDocteur+" AND employe.prenom == '"+prenomDocteur+"')"; 
+        ArrayList liste = Rechdoc.remplirChampsRequete(req, coco);
         return liste;
-//        ArrayList liste = Rechdoc.ajouterRequeteMulti (req, coco);
     }
 }
