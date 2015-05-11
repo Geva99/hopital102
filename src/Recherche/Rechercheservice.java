@@ -18,9 +18,8 @@ public class Rechercheservice extends Recherche_info{
     public ArrayList rechChambreParService (int numChambre, String service, Connexion coco) throws SQLException
     {
         //Donne pour chaque service, son nom, son bâtiment, ainsi que les prénom, nom et spécialité de son directeur
-    String req = "SELECT DISTINCT (service.nom), service.batiment, employe.prenom, employe.nom, specialite FROM `docteur`, `service`, `employe` WHERE (directeur = docteur.numero AND docteur.numero =employe.numero)";
-    ArrayList liste = remplirChampsRequete(req, coco);
-    return liste;
+        String req = "SELECT DISTINCT (service.nom), service.batiment, employe.prenom, employe.nom, specialite FROM `docteur`, `service`, `employe` WHERE (directeur = docteur.numero AND docteur.numero =employe.numero)";
+        ArrayList liste = remplirChampsRequete(req, coco);
+        return liste;
     }
-    
 }

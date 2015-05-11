@@ -20,13 +20,14 @@ import java.sql.ResultSetMetaData;
 public class Reportingspecialite {
     
     public int specialite() throws SQLException{
-    Statement stmt;
-    stmt= Connexion.conn.createStatement();
-    String myQuery = ("SELECT specialite, COUNT(*) FROM docteur, GROUP BY specialite ");
-    ResultSet rs1 = stmt.executeQuery (myQuery);
-    stmt.commit();
+            
     
-    
+//    Statement stmt;
+//    stmt= Connexion.conn.createStatement();
+//    String myQuery = ("SELECT specialite, COUNT(*) FROM docteur, GROUP BY specialite ");
+//    ResultSet rs1 = stmt.executeQuery (myQuery);
+//    stmt.commit();
+
 //        ResultSet rset;
 //        ResultSetMetaData rsetMeta;
 //        stmt.executeUpdate(requeteMaj);
