@@ -17,11 +17,13 @@ import java.sql.ResultSetMetaData;
  *
  * @author Gunness
  */
-public class Reportingspecialite {
+public class Reportingservice extends Reporting_info{
     
-    public int specialite() throws SQLException{
+    public ArrayList service(Connexion coco) throws SQLException{
             
-    
+        String req = "SELECT service.nom, avg(nb_lits) FROM chambre, service WHERE (service.code=chambre.code_service) GROUP BY service.nom";
+        ArrayList liste = remplirChampsRequete(req, coco);
+        return liste;
 //    Statement stmt;
 //    stmt= Connexion.conn.createStatement();
 //    String myQuery = ("SELECT specialite, COUNT(*) FROM docteur, GROUP BY specialite ");

@@ -27,14 +27,14 @@ public class Recherchechambre extends Recherche_info{
      */
     public ArrayList<Chambre> rechChambreParNum (int numChambre, Connexion coco) throws SQLException
     {
-        String req = "SELECT * FROM employe WHERE chambre.numero == '"+numChambre+"";
+        String req = "SELECT * FROM chambre WHERE chambre.numero == '"+numChambre+"";
         ArrayList liste = Rechcha.ajouterRequeteMulti (req, coco);
         return liste;
     }
     
     public ArrayList rechChambreParService (int numChambre, String service, Connexion coco) throws SQLException
     {
-        String req = "SELECT * FROM employe WHERE (chambre.no_chambre == '"+numChambre+"&&chambre.code_service == '"+service+"')"; 
+        String req = "SELECT * FROM chambre WHERE (chambre.no_chambre == '"+numChambre+" AND chambre.code_service == '"+service+"')"; 
         ArrayList liste = remplirChampsRequete(req, coco);
         return liste;
     }

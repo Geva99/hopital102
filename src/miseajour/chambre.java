@@ -29,18 +29,18 @@ class chambre extends miseajour{
 
     public void modifChambre (String anciencodeSer, int anciennumCha, String codeSer, int numCha, int numSurv, int nbLits) throws SQLException
     {
-        String maj1 = "UPDATE chambre SET no_chambre = '"+numCha+"' WHERE (code_service == '"+anciencodeSer+"' && no_chambre == '"+anciennumCha+"')";
+        String maj1 = "UPDATE chambre SET no_chambre = '"+numCha+"' WHERE (code_service == '"+anciencodeSer+"' AND no_chambre == '"+anciennumCha+"')";
         chambr.executeUpdate (maj1);
-        String maj2 = "UPDATE chambre SET nb_lits = '"+nbLits+"' WHERE (code_service == '"+anciencodeSer+"' && no_chambre == '"+anciennumCha+"')";
+        String maj2 = "UPDATE chambre SET nb_lits = '"+nbLits+"' WHERE (code_service == '"+anciencodeSer+"' AND no_chambre == '"+anciennumCha+"')";
         chambr.executeUpdate (maj2);
-        String maj3 = "UPDATE chambre SET (surveillant = '"+numSurv+"' && code_service = '"+codeSer+"') WHERE (code_service == '"+anciencodeSer+"' && no_chambre == '"+anciennumCha+"')";
+        String maj3 = "UPDATE chambre SET (surveillant = '"+numSurv+"' && code_service = '"+codeSer+"') WHERE (code_service == '"+anciencodeSer+"' AND no_chambre == '"+anciennumCha+"')";
         chambr.executeUpdate (maj3);
         
     }
     
     public void supprChambre (int codeSer, int numCha) throws SQLException
     {
-        String cmd = "DELETE FROM chambre WHERE (code_service == '"+codeSer+"' && no_chambre == 'numCha')";
+        String cmd = "DELETE FROM chambre WHERE (code_service == '"+codeSer+"' AND no_chambre == 'numCha')";
         chambr.executeUpdate(cmd);
     }
     

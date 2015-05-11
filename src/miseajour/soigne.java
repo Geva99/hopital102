@@ -26,14 +26,14 @@ public class soigne extends miseajour{
     {
         //On modifie le médecin qui s'occupe d'un patient
         
-        String maj = "UPDATE soigne SET (soigne.no_docteur == '"+numerodoc+"' && soigne.no_malade == '"+numeromalade+"') WHERE (soigne.no_docteur=='"+anciennumerodoc+"' && soigne.no_malade=='"+numeromalade+"')";
+        String maj = "UPDATE soigne SET (soigne.no_docteur == '"+numerodoc+"' AND soigne.no_malade == '"+numeromalade+"') WHERE (soigne.no_docteur=='"+anciennumerodoc+"' && soigne.no_malade=='"+numeromalade+"')";
         soi.executeUpdate (maj); 
     }
     
     
     public void supprSoi (int numerodoc, int numeromalade) throws SQLException
     {
-        String cmd1 = "DELETE FROM soigne WHERE (soigne.numero_docteur=='"+numerodoc+"'&&soigne.numero_malade=='"+numeromalade+"')";
+        String cmd1 = "DELETE FROM soigne WHERE (soigne.numero_docteur=='"+numerodoc+"' AND soigne.numero_malade=='"+numeromalade+"')";
         soi.executeUpdate(cmd1);
     }
 
