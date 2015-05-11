@@ -11,12 +11,15 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -26,42 +29,75 @@ public class histo extends JFrame implements ActionListener {
     
     private final JFrame fenetremenu; // declaration d'une fenetre pour acceuil
     private JPanel panelmenu; //declaration d'un panneau accueil
-    private final JButton recherche ;   //Bouton recherche
-    private JButton maj;  //Bouton mise a jour
-    private JButton histo;  //Bouton histogramme/reporting
     private final JLabel titre; // declaration du titre
+    private final JLabel titre2;
+    private final JLabel titre3; // declaration du titre
+    private final JLabel titre4;
+  //  private final JLabel titre5; // declaration du titre
+    private JButton retour;
+    private final JTextField rechnom;//decaration de textfield pour les noms et prenoms à rechercher
+    private final JTextField rechnprn;
+    private final JTextField rechnom2;
     
       public histo() throws IOException 
     {
        
         fenetremenu=new JFrame();//creation d'une fenetre pour le menu
-        fenetremenu.setTitle("Hopital 102 : Accueil"); // titre de la fenetre
+        fenetremenu.setTitle("Hopital 102 : Histogramme et Statistique"); // titre de la fenetre
         fenetremenu.setDefaultCloseOperation(EXIT_ON_CLOSE);
       
         panelmenu = new JPanel();//creation d'un panneau menu
         
-        panelmenu = setImage(fenetremenu, new File("histo.png"));
+        panelmenu = setImage(fenetremenu, new File("stat.png"));
         panelmenu.setLayout(null);
-        recherche = new JButton("Recherche d'information dans la base");
-        maj = new JButton("Mise à jourde la base");
-        histo = new JButton("Histogramme et statistique de la base");
-         String texttitre="";
-        titre = new JLabel(texttitre,JLabel.CENTER );
+ 
+        
+        rechnom=new JTextField();
+        rechnprn=new JTextField();
+        rechnom2=new JTextField();
+        String texttitre1="";
+        titre = new JLabel(texttitre1,JLabel.CENTER );
+         String texttitre2=" Nombre de docteur:";
+         titre2 = new JLabel(texttitre2,JLabel.LEFT );
+        
+         String texttitre3=" Nombre de malade:";
+         titre3 = new JLabel(texttitre3,JLabel.LEFT );
+         String texttitre4=" Nombre de d'infirmier :";
+         titre4 = new JLabel(texttitre4,JLabel.LEFT );
+         //titre5 = new JLabel(texttitre4,JLabel.LEFT );
+               retour = new JButton("Retour");
+        retour.setBounds(450,550,150,50);
+        retour.addActionListener(this);
+        panelmenu.add(retour);
 
        
-        titre.setBounds(195,20,300,100);
+        titre.setBounds(195,220,300,100);
+        titre2.setBounds(135,300,300,100);
+        titre3.setBounds(135,240,300,100);
+        titre4.setBounds(135,270,300,100);
+        //titre5.setBounds(195,345,300,100);
        
-        recherche .setBounds(220,295,250,50);
-        recherche .addActionListener(this);
-        maj.setBounds(220,225,250,50);
-        maj.addActionListener(this);
-        histo.setBounds(220,360,250,50);
-        histo.addActionListener(this);
+        rechnom.setBounds(270, 285, 100, 20);
+        rechnom.addActionListener(this);
         
-        panelmenu.add(recherche );
-        panelmenu.add(maj);
-        panelmenu.add(histo);
+        rechnprn.setBounds(270, 310, 100, 20);
+        rechnprn.addActionListener(this);
+        
+        rechnom2.setBounds(270, 340, 100, 20);
+        rechnom2.addActionListener(this);
+        
+ 
+        
+       
         panelmenu.add(titre);
+        panelmenu.add(titre2);
+        panelmenu.add(titre3);
+        panelmenu.add(titre4);
+       // panelmenu.add(titre5);
+        
+        panelmenu.add(rechnom);
+        panelmenu.add(rechnprn);
+        panelmenu.add(rechnom2);
 
         
         fenetremenu.pack();
@@ -76,19 +112,14 @@ public class histo extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent tada) 
     {
-     if(tada.getSource()==recherche)
+     
+      if(tada.getSource()==retour)
      {
-        
-         fenetremenu.setVisible(false);
-     }
-     if(tada.getSource()==maj)
-     {
-        
-         fenetremenu.setVisible(false);
-     }
-     if(tada.getSource()==histo)
-     {
-         
+          try {
+              Accueil pg1= new Accueil();
+          } catch (IOException ex) {
+              Logger.getLogger(Rechercheinf.class.getName()).log(Level.SEVERE, null, ex);
+          }
          fenetremenu.setVisible(false);
      }
     }
@@ -118,4 +149,3 @@ public class histo extends JFrame implements ActionListener {
         return panel;
     }
 }
-

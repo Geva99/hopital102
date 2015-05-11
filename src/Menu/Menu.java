@@ -36,7 +36,7 @@ public class Menu extends JFrame implements ActionListener{
     {
        
         fenetremenu=new JFrame();//creation d'une fenetre pour le menu
-        fenetremenu.setTitle("Menu Hopital 102"); // titre de la fenetre
+        fenetremenu.setTitle("Menu Hopital 102: Connexion"); // titre de la fenetre
         fenetremenu.setDefaultCloseOperation(EXIT_ON_CLOSE);
       
         panelmenu = new JPanel();//creation d'un panneau menu
