@@ -42,7 +42,7 @@ infirmier inf = new infirmier ();
         
     }
     
-    public void supprDoc (int numeroinf) throws SQLException
+    public void supprInf (int numeroinf) throws SQLException
     {
         String cmd1 = "DELETE FROM employe WHERE (employe.numero=='"+numeroinf+"')";
         inf.executeUpdate(cmd1);

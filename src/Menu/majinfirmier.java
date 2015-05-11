@@ -45,7 +45,9 @@ public class majinfirmier extends JFrame implements ActionListener {
     private final JLabel titre7; // declaration du titre
     private final JLabel titre8; // declaration du titre
     private final JLabel titre9; // declaration du titre
-    private final JLabel titre10; // declaration du titre  
+    private final JLabel titre10; // declaration du titre
+    private final JLabel titre11; // declaration du titre
+    
     private final JTextField rechnom;//decaration de textfield pour les noms et prenoms à rechercher
     private final JTextField rechnprn;
     private final JTextField addresse;
@@ -54,6 +56,7 @@ public class majinfirmier extends JFrame implements ActionListener {
     private final JTextField codserv;
     private final JTextField rot;
     private final JTextField salaire;
+    private final JTextField anciennum;
     private infirmier inf1;
     
       public majinfirmier() throws IOException 
@@ -77,6 +80,7 @@ public class majinfirmier extends JFrame implements ActionListener {
         codserv=new JTextField();
         rot=new JTextField();
         salaire=new JTextField();
+        anciennum=new JTextField();
         
         String texttitre1=" Veuillez remplir les champs:";
         titre = new JLabel(texttitre1,JLabel.CENTER );
@@ -92,6 +96,7 @@ public class majinfirmier extends JFrame implements ActionListener {
          String texttitre8=" code service :";
          String texttitre9=" Rotation :";
          String texttitre10=" Salaire :";
+         String texttitre11=" Ancien Num.Inf :";
          titre4 = new JLabel(texttitre4,JLabel.LEFT );
          titre5 = new JLabel(texttitre5,JLabel.LEFT );
          
@@ -100,7 +105,7 @@ public class majinfirmier extends JFrame implements ActionListener {
          titre8 = new JLabel(texttitre8,JLabel.LEFT );
          titre9 = new JLabel(texttitre9,JLabel.LEFT );
          titre10 = new JLabel(texttitre10,JLabel.LEFT );
-       
+         titre11 = new JLabel(texttitre11,JLabel.LEFT);
         titre.setBounds(185,220,300,20);
         titre2.setBounds(185,260,300,20);
         titre3.setBounds(185,280,300,20);
@@ -111,7 +116,7 @@ public class majinfirmier extends JFrame implements ActionListener {
         titre8.setBounds(185,380,300,20);
         titre9.setBounds(185,400,300,20);
         titre10.setBounds(185,420,300,20);
-       
+       titre11.setBounds(185,440,300,20);
         enter = new JButton("Enter");
         enter.setBounds(450,550,150,50);
         enter.addActionListener(this);
@@ -152,6 +157,9 @@ public class majinfirmier extends JFrame implements ActionListener {
         
         salaire.setBounds(270, 425, 100, 20);
         salaire.addActionListener(this);
+        
+        anciennum.setBounds(270, 445, 100, 20);
+        anciennum.addActionListener(this);
  
         
        
@@ -165,6 +173,7 @@ public class majinfirmier extends JFrame implements ActionListener {
         panelmenu.add(titre8);
         panelmenu.add(titre9);
         panelmenu.add(titre10);
+        panelmenu.add(titre11);
         
         panelmenu.add(rechnom);
         panelmenu.add(rechnprn);
@@ -174,6 +183,7 @@ public class majinfirmier extends JFrame implements ActionListener {
         panelmenu.add(codserv);
         panelmenu.add(rot);
         panelmenu.add(salaire);
+        panelmenu.add(anciennum);
         
 
         
@@ -206,6 +216,7 @@ public class majinfirmier extends JFrame implements ActionListener {
             String sal=salaire.getText();
             float salp = Float.parseFloat(numinfpp);
             
+            
             //infirmier inf1= new infirmier();
             inf1.insertInf(numinfp,codeservicep,rotp,salp,"",prenomp,adressp,telpp);
               Accueil pag1=new Accueil();
@@ -216,6 +227,7 @@ public class majinfirmier extends JFrame implements ActionListener {
           }
          fenetremenu.setVisible(false);
      }
+      
       // modifInf (int anciennumeroinf, int numeroinf, String codeservice, String rot, float sal)
       if(tada.getSource()==maj)
      {
@@ -224,7 +236,8 @@ public class majinfirmier extends JFrame implements ActionListener {
               String nomp= rechnom.getText();
               String prenomp= rechnprn.getText();
               String adressp= addresse.getText();
-              String telp=tel.getText();          
+              String telp=tel.getText();
+              
             int telpp = Integer.parseInt(telp);
             String codeservicep= codserv.getText();
             String rotp= rot.getText();
@@ -232,9 +245,11 @@ public class majinfirmier extends JFrame implements ActionListener {
             int numinfp = Integer.parseInt(numinfpp);
             String sal=salaire.getText();
             float salp = Float.parseFloat(numinfpp);
+            String anciennumpp=numinf.getText();
+            int anciennump=Integer.parseInt(anciennumpp);
             
             //infirmier inf1= new infirmier();
-            inf1.modifInf(numinfp,0,codeservicep,rotp,salp);
+            inf1.modifInf(anciennump,numinfp,codeservicep,rotp,salp);
               Accueil pag1=new Accueil();
           } catch (IOException ex) {
               Logger.getLogger(Rechercheinf.class.getName()).log(Level.SEVERE, null, ex);
@@ -247,9 +262,14 @@ public class majinfirmier extends JFrame implements ActionListener {
      {
           try {
               //resinf page2=new resinf();
+              String numinfpp=numinf.getText();
+            int numinfp = Integer.parseInt(numinfpp);
+            inf1.supprInf(numinfp);
               Accueil pag1=new Accueil();
           } catch (IOException ex) {
               Logger.getLogger(Rechercheinf.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (SQLException ex) {
+              Logger.getLogger(majinfirmier.class.getName()).log(Level.SEVERE, null, ex);
           }
          fenetremenu.setVisible(false);
      }
