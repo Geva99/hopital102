@@ -19,52 +19,62 @@ import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Gunness
  */
-public class Maj extends JFrame implements ActionListener {
+public class affichageresrech extends JFrame implements ActionListener {
     
     private final JFrame fenetremenu; // declaration d'une fenetre pour acceuil
     private JPanel panelmenu; //declaration d'un panneau accueil
-    private final JButton Docteur ;   //Bouton Docteur
-    private JButton Infirmier;  //Bouton Infirmier
-    private JButton Malade;  //Bouton Malade
     private final JLabel titre; // declaration du titre
+    private JButton retour;
+
+
+    private final JTextField affrequetes;//decaration de textfield pour les noms et prenoms à rechercher
     
-    
-      public Maj() throws IOException 
+      public affichageresrech() throws IOException 
     {
        
         fenetremenu=new JFrame();//creation d'une fenetre pour le menu
-        fenetremenu.setTitle("Hopital 102 : Miseà jour de la base"); // titre de la fenetre
+        fenetremenu.setTitle("Hopital 102 : Résultat"); // titre de la fenetre
         fenetremenu.setDefaultCloseOperation(EXIT_ON_CLOSE);
       
         panelmenu = new JPanel();//creation d'un panneau menu
         
-        panelmenu = setImage(fenetremenu, new File("maj.png"));
+        panelmenu = setImage(fenetremenu, new File("res.png"));
         panelmenu.setLayout(null);
-        Docteur = new JButton("Docteur");
-        Infirmier = new JButton("Infirmier");
-        Malade = new JButton("Malade");
-         String texttitre="";
-        titre = new JLabel(texttitre,JLabel.CENTER );
+ 
+        
+        affrequetes=new JTextField();
+        
+        String texttitre1=" Affichage des résultats :";
+        titre = new JLabel(texttitre1,JLabel.CENTER );
+        
+        retour = new JButton("Retour");
+        retour.setBounds(450,550,150,50);
+        retour.addActionListener(this);
+        panelmenu.add(retour);
+
+         
 
        
-        titre.setBounds(195,20,300,100);
+        titre.setBounds(100,120,300,100);
        
-        Docteur .setBounds(220,295,250,50);
-        Docteur .addActionListener(this);
-        Infirmier.setBounds(220,225,250,50);
-        Infirmier.addActionListener(this);
-        Malade.setBounds(220,360,250,50);
-        Malade.addActionListener(this);
+       
+        affrequetes.setBounds(70, 185, 600, 300);
+        affrequetes.addActionListener(this);
         
-        panelmenu.add(Docteur );
-        panelmenu.add(Infirmier);
-        panelmenu.add(Malade);
+
+ 
+        
+       
         panelmenu.add(titre);
+  
+        
+        panelmenu.add(affrequetes);
 
         
         fenetremenu.pack();
@@ -79,31 +89,20 @@ public class Maj extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent tada) 
     {
-     if(tada.getSource()==Docteur)
+     
+      if(tada.getSource()==affrequetes)
      {
-         try {
-             majdoc pageinf= new majdoc();
-         } catch (IOException ex) {
-             Logger.getLogger(Maj.class.getName()).log(Level.SEVERE, null, ex);
-         }
+         
          fenetremenu.setVisible(false);
      }
-     if(tada.getSource()==Infirmier)
+      
+      if(tada.getSource()==retour)
      {
-         try {
-             majinfirmier paginf= new majinfirmier();
-         } catch (IOException ex) {
-             Logger.getLogger(Maj.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         fenetremenu.setVisible(false);
-     }
-     if(tada.getSource()==Malade)
-     {
-         try {
-             majmal pagehisto= new majmal();
-         } catch (IOException ex) {
-             Logger.getLogger(Maj.class.getName()).log(Level.SEVERE, null, ex);
-         }
+          try {
+              Accueil pg1= new Accueil();
+          } catch (IOException ex) {
+              Logger.getLogger(affichageresrech.class.getName()).log(Level.SEVERE, null, ex);
+          }
          fenetremenu.setVisible(false);
      }
     }
