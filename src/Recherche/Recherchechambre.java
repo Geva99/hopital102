@@ -32,7 +32,7 @@ public class Recherchechambre extends Recherche_info{
         return liste;
     }
     
-    public ArrayList rechChambre (int numChambre, String service, Connexion coco) throws SQLException
+    public ArrayList rechChambreParService (int numChambre, String service, Connexion coco) throws SQLException
     {
         String req = "SELECT * FROM employe WHERE (chambre.no_chambre == '"+numChambre+"&&chambre.code_service == '"+service+"')"; 
         ArrayList liste = remplirChampsRequete(req, coco);
