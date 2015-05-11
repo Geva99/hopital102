@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Menu;
+import Connexion.Connexion;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -80,7 +81,8 @@ public class Accueil extends JFrame implements ActionListener{
      if(tada.getSource()==recherche)
      {
          try {
-             Rechercheinf pageinf= new Rechercheinf();
+             Connexion coco = null;
+             Rechercheinf pageinf = new Rechercheinf(coco);
              //pageinf.Rechercheinf();
              fenetremenu.setVisible(false);
          } catch (IOException ex) {

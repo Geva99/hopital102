@@ -30,6 +30,9 @@ public class majdoc extends JFrame implements ActionListener {
     private final JFrame fenetremenu; // declaration d'une fenetre pour acceuil
     private JPanel panelmenu; //declaration d'un panneau accueil
     private JButton enter;
+         private JButton supp;
+      private JButton maj;
+       private JButton add;
     private final JLabel titre; // declaration du titre
     private final JLabel titre2;
     private final JLabel titre3; // declaration du titre
@@ -107,6 +110,18 @@ public class majdoc extends JFrame implements ActionListener {
         enter.setBounds(450,550,150,50);
         enter.addActionListener(this);
         panelmenu.add(enter);
+          supp = new JButton("Supprimer");
+        supp.setBounds(450,500,150,50);
+        supp.addActionListener(this);
+        panelmenu.add(supp);
+        maj = new JButton("M.A.J");
+        maj.setBounds(450,450,150,50);
+        maj.addActionListener(this);
+        panelmenu.add(maj);
+        add = new JButton("Ajouter");
+        add.setBounds(450,400,150,50);
+        add.addActionListener(this);
+        panelmenu.add(add);
         
         rechnom.setBounds(270, 285, 100, 20);
         rechnom.addActionListener(this);

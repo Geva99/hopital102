@@ -5,6 +5,8 @@
  */
 package Menu;
 
+import Connexion.Connexion;
+import Recherche.Recherchedocteur;
 import javax.swing.JTextField;
 
 /**
@@ -43,8 +45,9 @@ public class Rechercheinf extends JFrame implements ActionListener {
     private final JTextField rechnom;//decaration de textfield pour les noms et prenoms à rechercher
     private final JTextField rechnprn;
     private final JTextField rechnom2;
+    private Recherchedocteur doc1;
     
-      public Rechercheinf() throws IOException 
+      public Rechercheinf(Connexion coco) throws IOException 
     {
        
         fenetremenu=new JFrame();//creation d'une fenetre pour le menu
@@ -121,6 +124,10 @@ public class Rechercheinf extends JFrame implements ActionListener {
       if(tada.getSource()==enter)
      {
           try {
+              String nomp= rechnom.getText();
+              String prenomp= rechnprn.getText();
+              String nomp2= rechnom2.getText(); //rechDocteur (String nomDocteur, String prenomDocteur, Connexion coco)
+              //doc1.rechDocteur(nomp,prenomp,"");
               affichageresrech page= new affichageresrech();
           } catch (IOException ex) {
               Logger.getLogger(Rechercheinf.class.getName()).log(Level.SEVERE, null, ex);

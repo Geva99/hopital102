@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -20,6 +21,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import miseajour.infirmier;
 
 /**
  *
@@ -30,6 +32,9 @@ public class majinfirmier extends JFrame implements ActionListener {
     private final JFrame fenetremenu; // declaration d'une fenetre pour acceuil
     private JPanel panelmenu; //declaration d'un panneau accueil
     private JButton enter;
+     private JButton supp;
+      private JButton maj;
+       private JButton add;
     private final JLabel titre; // declaration du titre
     private final JLabel titre2;
     private final JLabel titre3; // declaration du titre
@@ -44,11 +49,12 @@ public class majinfirmier extends JFrame implements ActionListener {
     private final JTextField rechnom;//decaration de textfield pour les noms et prenoms à rechercher
     private final JTextField rechnprn;
     private final JTextField addresse;
-    private final JTextField mail;
+    private final JTextField numinf;
     private final JTextField tel;
     private final JTextField codserv;
     private final JTextField rot;
     private final JTextField salaire;
+    private infirmier inf1;
     
       public majinfirmier() throws IOException 
     {
@@ -66,7 +72,7 @@ public class majinfirmier extends JFrame implements ActionListener {
         rechnom=new JTextField();
         rechnprn=new JTextField();
         addresse=new JTextField();
-        mail=new JTextField();
+        numinf=new JTextField();
         tel=new JTextField();
         codserv=new JTextField();
         rot=new JTextField();
@@ -81,7 +87,7 @@ public class majinfirmier extends JFrame implements ActionListener {
          titre3 = new JLabel(texttitre3,JLabel.LEFT );
          String texttitre4=" Nom :";
          String texttitre5=" Addresse :";
-         String texttitre6=" Mail :";
+         String texttitre6=" Num.Inf :";
          String texttitre7=" Tel :";
          String texttitre8=" code service :";
          String texttitre9=" Rotation :";
@@ -110,6 +116,18 @@ public class majinfirmier extends JFrame implements ActionListener {
         enter.setBounds(450,550,150,50);
         enter.addActionListener(this);
         panelmenu.add(enter);
+        supp = new JButton("Supprimer");
+        supp.setBounds(450,500,150,50);
+        supp.addActionListener(this);
+        panelmenu.add(supp);
+        maj = new JButton("M.A.J");
+        maj.setBounds(450,450,150,50);
+        maj.addActionListener(this);
+        panelmenu.add(maj);
+        add = new JButton("Ajouter");
+        add.setBounds(450,400,150,50);
+        add.addActionListener(this);
+        panelmenu.add(add);
         
         rechnom.setBounds(270, 285, 100, 20);
         rechnom.addActionListener(this);
@@ -120,8 +138,8 @@ public class majinfirmier extends JFrame implements ActionListener {
         addresse.setBounds(270, 325, 100, 20);
         addresse.addActionListener(this);
         
-        mail.setBounds(270, 345, 100, 20);
-        mail.addActionListener(this);
+        numinf.setBounds(270, 345, 100, 20);
+        numinf.addActionListener(this);
         
         tel.setBounds(270, 365, 100, 20);
         tel.addActionListener(this);
@@ -151,7 +169,7 @@ public class majinfirmier extends JFrame implements ActionListener {
         panelmenu.add(rechnom);
         panelmenu.add(rechnprn);
         panelmenu.add(addresse);
-        panelmenu.add(mail);
+        panelmenu.add(numinf);
         panelmenu.add(tel);
         panelmenu.add(codserv);
         panelmenu.add(rot);
@@ -172,50 +190,57 @@ public class majinfirmier extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent tada) 
     {
      
-      if(tada.getSource()==rechnom)
+      if(tada.getSource()==add)
      {
-         
+          try {
+              //insertInf (int numeroinf, String codeservice ,String rot, float sal, String nomemp, String prenomemp, String adresse,int tel)
+              String nomp= rechnom.getText();
+              String prenomp= rechnprn.getText();
+              String adressp= addresse.getText();
+              String telp=tel.getText();          
+            int telpp = Integer.parseInt(telp);
+            String codeservicep= codserv.getText();
+            String rotp= rot.getText();
+            String numinfpp=numinf.getText();
+            int numinfp = Integer.parseInt(numinfpp);
+            String sal=salaire.getText();
+            float salp = Float.parseFloat(numinfpp);
+            
+            //infirmier inf1= new infirmier();
+            inf1.insertInf(numinfp,codeservicep,rotp,salp,"",prenomp,adressp,telpp);
+              Accueil pag1=new Accueil();
+          } catch (IOException ex) {
+              Logger.getLogger(Rechercheinf.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (SQLException ex) {
+              Logger.getLogger(majinfirmier.class.getName()).log(Level.SEVERE, null, ex);
+          }
          fenetremenu.setVisible(false);
      }
-      
-      if(tada.getSource()==rechnprn)
+      // modifInf (int anciennumeroinf, int numeroinf, String codeservice, String rot, float sal)
+      if(tada.getSource()==maj)
      {
-          
-         fenetremenu.setVisible(false);
-     }
-      
-      if(tada.getSource()==addresse)
-     {
-         
-         fenetremenu.setVisible(false);
-     }
-      
-      if(tada.getSource()==mail)
-     {
-          
-         fenetremenu.setVisible(false);
-     }
-      
-      if(tada.getSource()==tel)
-     {
-         
-         fenetremenu.setVisible(false);
-     }
-      
-      if(tada.getSource()==codserv)
-     {
-          
-         fenetremenu.setVisible(false);
-     }
-      
-      if(tada.getSource()==rot)
-     {
-        
-         fenetremenu.setVisible(false);
-     }
-      if(tada.getSource()==salaire)
-     {
-         
+          try {
+           
+              String nomp= rechnom.getText();
+              String prenomp= rechnprn.getText();
+              String adressp= addresse.getText();
+              String telp=tel.getText();          
+            int telpp = Integer.parseInt(telp);
+            String codeservicep= codserv.getText();
+            String rotp= rot.getText();
+            String numinfpp=numinf.getText();
+            int numinfp = Integer.parseInt(numinfpp);
+            String sal=salaire.getText();
+            float salp = Float.parseFloat(numinfpp);
+            
+            //infirmier inf1= new infirmier();
+            inf1.modifInf(numinfp,0,codeservicep,rotp,salp);
+              Accueil pag1=new Accueil();
+          } catch (IOException ex) {
+              Logger.getLogger(Rechercheinf.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (SQLException ex) {
+              Logger.getLogger(majinfirmier.class.getName()).log(Level.SEVERE, null, ex);
+          }
          fenetremenu.setVisible(false);
      }
        if(tada.getSource()==enter)
