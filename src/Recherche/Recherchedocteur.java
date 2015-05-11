@@ -17,28 +17,20 @@ import Stockage.Docteur;
  */
 public class Recherchedocteur extends Rechercheemploye{
     
-        Recherchedocteur Rechdoc = new Recherchedocteur();
+    Recherchedocteur Rechdoc = new Recherchedocteur();
     
     public ArrayList<Docteur> rechDocteurParNom (String nomDocteur, Connexion coco) throws SQLException
     {
         String req = "SELECT * FROM employe WHERE employe.nom == '"+nomDocteur+"";
         ArrayList liste = Rechdoc.ajouterRequeteMulti (req, coco);
-        return (liste);
+        return liste;
     }
     
-    public void rechDocteur (String employe, String nomDocteur, String prenomDocteur, Connexion coco) throws SQLException
+    public ArrayList rechDocteur (String nomDocteur, String prenomDocteur, Connexion coco) throws SQLException
     {
-        Docteur doc;
         String req = "SELECT * FROM employe WHERE (employe.nom == '"+nomDocteur+"&&employe.prenom == '"+prenomDocteur+"')"; 
-        remplirChampsRequete(req);
-        
+        ArrayList liste = remplirChampsRequete(req, coco);
+        return liste;
 //        ArrayList liste = Rechdoc.ajouterRequeteMulti (req, coco);
-        
-        
-//        doc.getspecialite();
-//        doc.getnom();
-//        doc.getprenom();
-//        doc.getadresse();
-//        doc.gettel();
     }
 }

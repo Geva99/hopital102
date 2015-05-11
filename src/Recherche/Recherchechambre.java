@@ -5,12 +5,39 @@
  */
 package Recherche;
 
+import Connexion.Connexion;
+import Stockage.Chambre;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author Twentycent_ONE
  */
 public class Recherchechambre extends Recherche_info{
     
+    Recherchechambre Rechcha = new Recherchechambre();
     
+    /**
+     *
+     * @param numChambre
+     * @param coco
+     * @return
+     * @throws SQLException
+     */
+    public ArrayList<Chambre> rechChambreParNum (int numChambre, Connexion coco) throws SQLException
+    {
+        String req = "SELECT * FROM employe WHERE chambre.numero == '"+numChambre+"";
+        ArrayList liste = Rechcha.ajouterRequeteMulti (req, coco);
+        return liste;
+    }
+    
+    public ArrayList rechChambre (int numChambre, String service, Connexion coco) throws SQLException
+    {
+        String req = "SELECT * FROM employe WHERE (chambre.no_chambre == '"+numChambre+"&&chambre.code_service == '"+service+"')"; 
+        ArrayList liste = remplirChampsRequete(req, coco);
+        return liste;
+//        ArrayList liste = Rechdoc.ajouterRequeteMulti (req, coco);
+    }
     
 }

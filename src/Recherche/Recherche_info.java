@@ -78,7 +78,7 @@ public abstract class Recherche_info {
             String champs;
             champs = rset.getString(1); // ajouter premier champ
 
-            // Concatener les champs de la ligne separes par ,
+            // Concatener les champs de la ligne separés par une virgule
             for (int i = 1; i < nbColonne; i++) {
                 champs = champs + "," + rset.getString(i+1);
             }
@@ -124,7 +124,7 @@ public abstract class Recherche_info {
 
         // calcul du nombre de colonnes du resultat
         int nbColonne = rsetMeta.getColumnCount();
-
+        
         // creation d'une ArrayList de String
         ArrayList<String> liste;
         liste = new ArrayList<String>();
@@ -142,10 +142,11 @@ public abstract class Recherche_info {
     /**
      * Methode qui retourne l'ArrayList des champs de la requete en parametre
      * @param requete
+     * @param coco
      * @return 
      * @throws java.sql.SQLException
      */
-    public ArrayList remplirChampsRequete(String requete) throws SQLException {
+    public ArrayList remplirChampsRequete(String requete, Connexion coco) throws SQLException {
         Statement stmt;
         stmt=Connexion.conn.createStatement();
         ResultSet rset;
@@ -156,7 +157,7 @@ public abstract class Recherche_info {
         // récupération du résultat de l'ordre
         rsetMeta = rset.getMetaData();
 
-        // calcul du nombre de colonnes du resultat
+        // On calcule le nbre de colonnes de rsetMeta
         int nbColonne = rsetMeta.getColumnCount();
 
         // creation d'une ArrayList de String
@@ -168,19 +169,19 @@ public abstract class Recherche_info {
             String champs;
             champs = rset.getString(1); // ajouter premier champ
 
-            // Concatener les champs de la ligne separes par ,
+            // On concatène les champs de la ligne séparés par ,
             for (int i = 1; i < nbColonne; i++) {
                 champs = champs + "," + rset.getString(i+1);
             }
 
-            // ajouter un "\n" à la ligne des champs
+            // On ajoute un "\n" à la ligne des champs
             champs = champs + "\n";
 
-            // ajouter les champs de la ligne dans l'ArrayList
+            // On ajoute les champs de la ligne dans l'ArrayList
             liste.add(champs);
         }
 
-        // Retourner l'ArrayList
+        // On retourne l'ArrayList
         return liste;
     }
     
